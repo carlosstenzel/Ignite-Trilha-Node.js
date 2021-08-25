@@ -38,7 +38,7 @@ describe("Create Category Controller", () => {
                 password: "admin"
             })
 
-        const {token } = responseToken.body;
+        const {refresh_token } = responseToken.body;
 
         await request(app).post("/categories")
             .send({
@@ -46,7 +46,7 @@ describe("Create Category Controller", () => {
                 description: "Category Supertest"
             })
             .set({
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${refresh_token}`,
             })
 
         const response = await request(app).get('/categories');
